@@ -9,7 +9,7 @@ function CourseAccess() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/courses/${courseId}`);
+        const res = await axios.get(`https://mini-9vxb.onrender.com/courses/${courseId}`);
         setCourse(res.data);
       } catch (err) {
         console.error("Error fetching course:", err);
