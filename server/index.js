@@ -4,14 +4,20 @@ import cors from 'cors';
 import User from './models/User.js';
 import Course from './models/Course.js';
 import sendMail from './Mail.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/yourDBName", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+}).then(() => {
+  console.log("Connected to MongoDB Atlas");
+}).catch((err) => {
+  console.error("Error connecting to MongoDB Atlas:", err.message);
 });
 
 // Sign-up Route

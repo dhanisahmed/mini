@@ -1,16 +1,16 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const transporter = nodemailer.createTransport({
     secure: true,
     host: 'smtp.gmail.com',
     port: 465,
     auth: {
-        user: 'venkateshamulraj@gmail.com',
-        pass: 'frocmbkkqvexieay'
+        user: 'info.triptale@gmail.com',
+        pass: 'pwjweeqjxeqlrrha'
     }
 });
 
-// export the sendMail function
+// Export the sendMail function as the default export
 const sendMail = (to, sub, msg) => {
     transporter.sendMail({
         to: to,
@@ -19,4 +19,4 @@ const sendMail = (to, sub, msg) => {
     });
 };
 
-module.exports = sendMail;
+export default sendMail;
