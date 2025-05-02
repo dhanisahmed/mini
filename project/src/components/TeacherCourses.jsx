@@ -12,7 +12,7 @@ function TeacherCourses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/teacher/${teacherId}/courses`);
+        const res = await axios.get(`https://mini-9vxb.onrender.com/teacher/${teacherId}/courses`);
         setCourses(res.data.courses);
       } catch (err) {
         console.error('Error fetching courses:', err);
@@ -25,7 +25,7 @@ function TeacherCourses() {
   }, [teacherId]);
 
   function deleteCourse(courseId) {
-    axios.delete(`http://localhost:3000/courses/${courseId}`)
+    axios.delete(`https://mini-9vxb.onrender.com/courses/${courseId}`)
       .then((res) => {
         console.log(res.data);
         setCourses(prev => prev.filter(course => course._id !== courseId)); // remove from UI
