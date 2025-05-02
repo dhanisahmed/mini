@@ -16,7 +16,7 @@ function UpdateCourseDetails() {
   useEffect(() => {
     const fetchCourse = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/courses/${id}`);
+        const res = await axios.get(`https://mini-9vxb.onrender.com/courses/${id}`);
         const { title, description, category, videoUrl, pdfUrl } = res.data;
         setCourseData({ title, description, category, videoUrl, pdfUrl });
       } catch (error) {
@@ -34,7 +34,7 @@ function UpdateCourseDetails() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(`http://localhost:3000/courses/${id}`, courseData);
+      await axios.put(`https://mini-9vxb.onrender.com/courses/${id}`, courseData);
       alert('Course updated successfully!');
       navigate('/my-courses');
     } catch (error) {
