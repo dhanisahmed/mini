@@ -19,7 +19,7 @@ function UploadCourse() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/upload-course', {
+      await axios.post('https://mini-9vxb.onrender.com/upload-course', {
         ...courseData,
         teacherId
       });
