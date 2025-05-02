@@ -11,7 +11,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:3000/signup", form);
+      const res = await axios.post("https://mini-9vxb.onrender.com/signup", form);
       alert(res.data.msg);
       navigate('/signin');
     } catch (err) { 
