@@ -7,8 +7,8 @@ const HomeStudent = () => {
         <nav className="sticky top-0 z-10 flex items-center justify-between px-10 py-4 bg-white border-b shadow">
           <h1 className="text-2xl font-bold text-blue-700">LearnHub</h1>
           <div className="space-x-6 text-sm font-medium">
-            <Link to="/courses" className="text-gray-600 transition hover:text-blue-700">Browse Courses</a>
-            <Link to="/my-enrollments" className="text-gray-600 transition hover:text-blue-700">My Enrollments</a>
+            <Link to="/courses" className="text-gray-600 transition hover:text-blue-700">Browse Courses</Link>
+            <Link to="/my-enrollments" className="text-gray-600 transition hover:text-blue-700">My Enrollments</Link>
             <button
               onClick={() => {
                 localStorage.clear();
