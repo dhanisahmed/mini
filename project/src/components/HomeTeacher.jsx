@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HomeTeacher = () => {
     return (
       <div className="bg-[#fefefe] text-gray-800">
@@ -5,8 +7,8 @@ const HomeTeacher = () => {
         <nav className="sticky top-0 z-10 flex items-center justify-between px-10 py-4 bg-white border-b shadow">
           <h1 className="text-2xl font-bold text-green-700">LearnHub</h1>
           <div className="space-x-6 text-sm font-medium">
-            <a href="/upload-course" className="text-gray-600 transition hover:text-green-700">Upload Course</a>
-            <a href="/my-courses" className="text-gray-600 transition hover:text-green-700">My Courses</a>
+            <Link to="/upload-course" className="text-gray-600 transition hover:text-green-700">Upload Course</Link>
+            <Link to="/my-courses" className="text-gray-600 transition hover:text-green-700">My Courses</Link>
             <button
               onClick={() => {
                 localStorage.clear();
