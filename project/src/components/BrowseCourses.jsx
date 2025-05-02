@@ -8,13 +8,13 @@ function BrowseCourses() {
   const [teachers, setTeachers] = useState({});
 
   useEffect(() => {
-    axios.get("http://localhost:3000/courses")
+    axios.get("https://mini-9vxb.onrender.com/courses")
       .then(async res => {
         setCourses(res.data);
         const teacherIds = [...new Set(res.data.map(course => course.teacherId))];
         
         const teacherResponses = await Promise.all(
-          teacherIds.map(id => axios.get(`http://localhost:3000/teacher/${id}`))
+          teacherIds.map(id => axios.get(`https://mini-9vxb.onrender.com/teacher/${id}`))
         );
   
         const teacherData = {};
