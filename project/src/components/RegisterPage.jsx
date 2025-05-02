@@ -12,7 +12,7 @@ function RegisterPage() {
 
     const fetchUser = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/teacher/${userId}`);
+        const res = await axios.get(`https://mini-9vxb.onrender.com/teacher/${userId}`);
         setUser(res.data);
       } catch (err) {
         console.error("Failed to fetch user:", err);
@@ -27,7 +27,7 @@ function RegisterPage() {
     if (!studentId) return alert("Please sign in to register.");
   
     try {
-      await axios.post(`http://localhost:3000/courses/${courseId}/register`, {
+      await axios.post(`https://mini-9vxb.onrender.com/courses/${courseId}/register`, {
         studentId: studentId, // ✅ studentId in body
       });
   
