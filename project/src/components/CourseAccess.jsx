@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 function CourseAccess() {
@@ -30,26 +30,26 @@ function CourseAccess() {
         <div className="space-y-4">
           <div className="p-4 bg-blue-100 rounded-lg">
             <h2 className="text-lg font-semibold text-blue-700">Video Lecture</h2>
-            <a
+            <Link
               href={course.videoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-2 text-blue-600 underline hover:text-blue-800"
             >
               Watch Video
-            </a>
+            </Link>
           </div>
 
           <div className="p-4 bg-green-100 rounded-lg">
             <h2 className="text-lg font-semibold text-green-700">Downloadable PDF</h2>
-            <a
+            <Link
               href={course.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block mt-2 text-green-600 underline hover:text-green-800"
             >
               View PDF
-            </a>
+            </Link>
           </div>
         </div>
       </div>

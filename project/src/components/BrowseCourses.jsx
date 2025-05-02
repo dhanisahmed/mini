@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function BrowseCourses() {
   const [courses, setCourses] = useState([]);
@@ -72,12 +73,12 @@ function BrowseCourses() {
             <p className="text-sm text-gray-500">
               Teacher: {teachers[course.teacherId] || "Loading..."}
             </p>
-            <a
+            <Link
               href={`/course/${course._id}`}
               className="inline-block px-4 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-700"
             >
               View Details
-            </a>
+            </Link>
           </div>
         ))}
       </div>

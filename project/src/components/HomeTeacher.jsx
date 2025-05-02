@@ -26,12 +26,12 @@ const HomeTeacher = () => {
           <div className="max-w-3xl text-center">
             <h2 className="mb-6 text-4xl font-bold text-green-800 md:text-5xl">Inspire Minds, Share Your Knowledge</h2>
             <p className="mb-8 text-lg text-gray-600">Create courses, reach students globally, and shape the next generation of learners.</p>
-            <a
+            <Link
               href="/upload-course"
               className="inline-block px-6 py-3 font-medium text-white transition bg-green-700 rounded-full hover:bg-green-800"
             >
               Upload Course
-            </a>
+            </Link>
           </div>
         </section>
   
