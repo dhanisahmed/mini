@@ -12,10 +12,10 @@ function CourseDetails() {
   useEffect(() => {
     const fetchCourseAndTeacher = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/courses/${id}`);
+        const res = await axios.get(`https://mini-9vxb.onrender.com/courses/${id}`);
         setCourse(res.data);
 
-        const teacherRes = await axios.get(`http://localhost:3000/teacher/${res.data.teacherId}`);
+        const teacherRes = await axios.get(`https://mini-9vxb.onrender.com/teacher/${res.data.teacherId}`);
         setTeacherName(teacherRes.data.name);
       } catch (error) {
         console.error("Error fetching course or teacher data:", error);
