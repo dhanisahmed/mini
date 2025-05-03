@@ -12,6 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
+
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -110,45 +111,59 @@ app.put("/courses/:id", async (req, res) => {
   }
 });
 
-// Enroll a student in a course
 app.post("/courses/:id/register", async (req, res) => {
   const courseId = req.params.id;
   const { studentId } = req.body;
 
   try {
-    const course = await Course.findById(courseId);
-    if (!course) return res.status(404).json({ msg: "Course not found" });
+      const course = await Course.findById(courseId);
+      if (!course) return res.status(404).json({ msg: "Course not found" });
 
-    if (course.enrolledStudents.includes(studentId)) {
-      return res.status(400).json({ msg: "Already registered for this course" });
-    }
+      if (course.enrolledStudents.includes(studentId)) {
+          return res.status(400).json({ msg: "Already registered for this course" });
+      }
 
-    // Enroll the student
-    course.enrolledStudents.push(studentId);
-    await course.save();
+      // Enroll the student
+      course.enrolledStudents.push(studentId);
+      await course.save();
 
-    // Find the student to get their email
-    const student = await User.findById(studentId);
-    if (!student) return res.status(404).json({ msg: "Student not found" });
+      // Find the student to get their email
+      const student = await User.findById(studentId);
+      if (!student) return res.status(404).json({ msg: "Student not found" });
 
-    // Prepare and send the email
-    const subject = `Registration Successful for ${course.title}`;
-    const message = `
-      <h2>Congratulations, ${student.name}!</h2>
-      <p>You have successfully registered for the course: <strong>${course.title}</strong>.</p>
-      <p>We wish you a wonderful learning journey with us!</p>
-      <br/>
-      <p>Best Regards,<br/><strong>LearnHub Team</strong></p>
-    `;
+      // Prepare and send the email
+      const subject = `Registration Successful for ${course.title}`;
+      const message = `
+          <h2>Congratulations, ${student.name}!</h2>
+          <p>You have successfully registered for the course: <strong>${course.title}</strong>.</p>
+          <p>We wish you a wonderful learning journey with us!</p>
+          <br/>
+          <p>Best Regards,<br/><strong>LearnHub Team</strong></p>
+      `;
 
-    sendMail(student.email, subject, message);
-    res.status(200).json({ msg: "Student enrolled successfully and mail sent" });
-    
+      const info = await sendMail(student.email, subject, message);
+      console.log('Email info:', info);
+      res.status(200).json({ msg: "Student enrolled successfully and mail sent" });
   } catch (err) {
-    res.status(500).json({ msg: "Error enrolling student", error: err.message });
+      console.error('Error in course registration or email sending:', err);
+      res.status(500).json({ msg: "Error enrolling student or sending email", error: err.message, stack: err.stack });
   }
 });
 
+// Optional test endpoint
+app.get("/test-email", async (req, res) => {
+  try {
+      const info = await sendMail(
+          "your_valid_email@example.com", // Replace with a valid email
+          "Test Email from Index",
+          "<p>This is a test email from index.js.</p>"
+      );
+      res.status(200).json({ msg: "Test email sent", info });
+  } catch (err) {
+      console.error('Error sending test email:', err);
+      res.status(500).json({ msg: "Error sending test email", error: err.message });
+  }
+});
 // Fetch a single course by ID
 app.get("/courses/:id", async (req, res) => {
   try {
