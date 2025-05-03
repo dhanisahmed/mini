@@ -26,12 +26,12 @@ const HomeStudent = () => {
           <div className="max-w-3xl text-center">
             <h2 className="mb-6 text-4xl font-bold text-blue-800 md:text-5xl">Your Learning Journey Starts Here</h2>
             <p className="mb-8 text-lg text-gray-600">Access top-notch courses curated by experienced teachers. Learn at your pace, anytime, anywhere.</p>
-            <a
-              href="/courses"
+            <Link
+              to="/courses"
               className="inline-block px-6 py-3 font-medium text-white transition bg-blue-700 rounded-full hover:bg-blue-800"
             >
               Explore Courses
-            </a>
+            </Link>
           </div>
         </section>
   

@@ -58,12 +58,12 @@ const HomeTeacher = () => {
         <section className="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-green-50">
           <h3 className="mb-3 text-3xl font-semibold text-green-900">Let's Get Started</h3>
           <p className="mb-6 text-lg text-gray-600">Join hundreds of other teachers sharing valuable knowledge.</p>
-          <a
-            href="/upload-course"
+          <Link
+            to="/upload-course"
             className="px-6 py-3 font-medium text-white transition bg-green-700 rounded-full hover:bg-green-800"
           >
             Share Your First Lesson
-          </a>
+          </Link>
         </section>
       </div>
     );

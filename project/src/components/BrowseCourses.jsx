@@ -74,7 +74,7 @@ function BrowseCourses() {
               Teacher: {teachers[course.teacherId] || "Loading..."}
             </p>
             <Link
-              href={`/course/${course._id}`}
+              to={`/course/${course._id}`}
               className="inline-block px-4 py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-700"
             >
               View Details
